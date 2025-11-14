@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anniv le V</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('images/img.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 200vh;
+        }
+
+        .spacer {
+            height: 100vh;
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 50px 20px;
+            min-height: 100vh;
+        }
+
+        .images-container img {
+            max-width: 45%;
+            height: auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .images-container img.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .band-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .band-container img {
+            max-width: 90%;
+            height: auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .band-container img.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mam-image {
+            position: absolute;
+            bottom: 70px;
+            right: 10%;
+            z-index: 10;
+        }
+
+        .mam-image img {
+            max-width: 400px;
+            height: auto;
+            opacity: 1;
+            transform: none;
+        }
+
+        .lev-link {
+
+            position: absolute;
+            bottom: -80px;
+            right: calc(10% + 130px);
+            z-index: 11;
+        }
+
+        .lev-link img {
+            max-width: 300px;
+            height: auto;
+            opacity: 1;
+            transform: none;
+            transition: transform 0.3s ease;
+        }
+
+        .lev-link img:hover {
+            transform: scale(1.1);
+        }
+
+        .scrolling-text {
+            overflow: hidden;
+            background-color: #ffffff;
+            padding: 10px 0;
+            margin: 50px 0;
+        }
+
+        .scrolling-text-content {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+
+        .scrolling-text-content span {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000000;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            padding: 0 50px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .loe-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 50px 20px;
+            flex-wrap: wrap;
+            margin-top: 100px;
+        }
+
+        .loe-container img {
+            max-width: 30%;
+            height: auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .loe-container img.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        footer p {
+            margin: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #000000;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="spacer"></div>
+    <div class="images-container">
+        <img src="images/text.jpg" alt="Text 1" id="text1">
+    </div>
+    <div class="scrolling-text">
+        <div class="scrolling-text-content">
+            <span>j'ai le droit de prendre ces grands airs</span>
+            <span>Je reste plus âgée </span>
+            <span> Profite de zinzin, comme tu sais déjà le faire</span>
+            <span>j'ai le droit de prendre ces grands airs</span>
+            <span>Je reste plus âgée</span>
+            <span>Profite de zinzin, comme tu sais déjà le faire</span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="band-container">
+        <img src="images/band.png" alt="Band" id="band">
+        <div class="mam-image">
+            <img src="images/mam.png" alt="MAM">
+        </div>
+        <a href="Aaron Longsleeves, Precious Tucker - NAMESAKE (1).mp3" download="Aaron Longsleeves, Precious Tucker - NAMESAKE.mp3" class="lev-link">
+            <img src="images/lev.png" alt="LEV">
+        </a>
+    </div>
+
+    <div class="loe-container">
+        <img src="images/loe.png" alt="LOE 1" id="loe1">
+        <img src="images/loe2.png" alt="LOE 2" id="loe2">
+        <img src="images/loe3.png" alt="LOE 3" id="loe3">
+    </div>
+
+    <footer>
+        <p>Buon compleanno habibi. <br> Ce site a été fait en 2 2 à Rotterdam, aucun droits ne sont réservés. Ce site est en attente d'un soutien financier de la part de la Mairie de la ville de New-York</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        document.querySelectorAll('.images-container img, .band-container img, .loe-container img').forEach(img => {
+            observer.observe(img);
+        });
+    </script>
+</body>
+</html>
